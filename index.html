@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- <base href="/"> -->
+	    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+</head>
+<body ng-app="mainModule">
+  <div  >
+    <h3>Select the localization:</h3>
+    <a ui-sref="en">English (USA)</a><br />
+    <a ui-sref="sp">Italiano (Italia)</a>
+    <div ui-view></div>
+
+  </div>
+  	<script type="text/javascript" src="angular.min.js"></script>
+        <script src="//unpkg.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.js"></script>
+
+	  <script src="tmhDynamicLocale.js"></script>
+
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
