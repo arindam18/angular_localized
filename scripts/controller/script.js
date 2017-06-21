@@ -2,7 +2,7 @@
 app.config(config);
 function config(tmhDynamicLocaleProvider) {
     console.log("tmhDynamicLocaleProvider")
-    tmhDynamicLocaleProvider.localeLocationPattern('angular-locale_{{locale}}.js');
+    tmhDynamicLocaleProvider.localeLocationPattern('scripts/libs/angular-locale_{{locale}}.js');
 }
 
 /*app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -24,7 +24,7 @@ function config(tmhDynamicLocaleProvider) {
 	});*/
 
 
-  app.controller("mainController",["$scope", "$locale", "tmhDynamicLocale", "$state", "$http" ,function ($scope, $locale, tmhDynamicLocale, $state, $http)
+  app.controller("mainController",["$scope", "$locale", "tmhDynamicLocale", "$http" ,function ($scope, $locale, tmhDynamicLocale, $http)
   {
     $scope.locale = 'en-us';
     $scope.xmlData;
@@ -60,5 +60,4 @@ function config(tmhDynamicLocaleProvider) {
     }        
     // Store the current date/time in a variable
     $scope.currentDate = new Date();
-    console.log(JSON.stringify($state.current.title,null,2));
   }]);

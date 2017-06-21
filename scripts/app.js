@@ -1,1 +1,1 @@
-var app = angular.module("mainModule", ["ngLocale","ui.router",'tmh.dynamicLocale','xml']);
+var app = angular.module("mainModule", ["ngLocale",'tmh.dynamicLocale','xml']);
