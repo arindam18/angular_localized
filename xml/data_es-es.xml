@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <frontpage>
+        <heading>Spanish / Castilian (Spain)</heading>
+        <localId>ID de locale actual:</localId>
+        <date>La fecha es:</date>
+        <number>Este es un numero:</number>
+       
+    </frontpage>
+</root>

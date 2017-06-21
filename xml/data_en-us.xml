@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <frontpage>
+        <heading>English (USA)</heading>
+        <localId>Current locale ID:</localId>
+        <date>The date is:</date>
+        <number>This is a number:</number>
+       
+    </frontpage>
+</root>

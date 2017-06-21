@@ -1,9 +1,10 @@
 
-  <div >
-    <h3>spanish (spanish)</h3>
-    <strong>ID corrente della localizzazione:</strong> {{locale}}<br />
-    <strong>La data &egrave;</strong> {{currentDate | date:"fullDate"}}<br />
-    <strong>Questo &egrave; un numero:</strong> {{1234.56 | number}}<br />
+  <!-- <script src="../angular-locale_en-es.js"></script> -->
+  <div>
+    <h3 ng-bind="title"></h3>
+    <strong ng-bind="localstr"></strong> {{locale}}<br />
+    <strong ng-bind="datestr"></strong> {{currentDate | date:"fullDate"}}<br />
+    <strong ng-bind="numberstr"></strong> {{1234.56 | number}}<br />
     <br />
-    <a href="../">INDIETRO</a>
+    <a href="../">BACK</a>
   </div>

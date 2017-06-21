@@ -1,6 +1,3 @@
-var app = angular.module("mainModule", ["ngLocale","ui.router",'tmh.dynamicLocale']);
-
-
 
 app.config(config);
 function config(tmhDynamicLocaleProvider) {
@@ -8,21 +5,15 @@ function config(tmhDynamicLocaleProvider) {
     tmhDynamicLocaleProvider.localeLocationPattern('angular-locale_{{locale}}.js');
 }
 
-
-
-app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-	 // $locationProvider.html5Mode(true);
+/*app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/en');
     $stateProvider
-        // HOME STATES AND NESTED VIEWS ========================================
        	.state('en', {
             url: '/en',
             templateUrl: 'en_us/index.html',
             controller:'mainController',
             title : 'en'
         })
-
-        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
         .state('sp', {
             url: '/sp',
             templateUrl: 'it_sp/index.html',
@@ -30,22 +21,44 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             title : 'sp'
 		});
 		// $locationProvider.html5Mode(true);
-	});
+	});*/
 
 
-  app.controller("mainController", function ($scope, $locale, tmhDynamicLocale, $state)
+  app.controller("mainController",["$scope", "$locale", "tmhDynamicLocale", "$state", "$http" ,function ($scope, $locale, tmhDynamicLocale, $state, $http)
   {
-    // Store the current locale ID in a variable
-    if($state.current.title == "en"){
-        $scope.locale = 'en-us';
-    }else{
-        $scope.locale = 'es-es';
-    }
-    tmhDynamicLocale.set($scope.locale);
+    $scope.locale = 'en-us';
+    $scope.xmlData;
+    $scope.title = '';
+    $scope.localstr = '';
+    $scope.datestr = '';
+    $scope.numberstr = '';
+    $scope.changeLanguage = function(){
+        console.log('change')
+        $http({
+        method: 'GET',
+        url: 'xml/data_'+$scope.locale+'.xml'
+        }).then(function (xml){
+            console.log(xml)
+            $scope.xmlData = xml.data.root;
+            $scope.getReady($scope.xmlData);
+        },function (error){
+            console.log(error);
+        });
+        tmhDynamicLocale.set($scope.locale);
 
-    $scope.localeId = $locale.id;
-        
+    }
+    $scope.changeLanguage();
+
+    
+
+    $scope.getReady = function(xml){
+        console.log(xml)
+        $scope.title = xml.frontpage.heading;
+        $scope.localstr = xml.frontpage.localId;
+        $scope.datestr = xml.frontpage.date;
+        $scope.numberstr = xml.frontpage.number;
+    }        
     // Store the current date/time in a variable
     $scope.currentDate = new Date();
     console.log(JSON.stringify($state.current.title,null,2));
-  });
+  }]);
